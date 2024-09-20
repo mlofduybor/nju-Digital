@@ -1,0 +1,70 @@
+#include "VFSM_bin.h"
+#include "verilated.h"
+#include "verilated_fst_c.h"
+
+#include "stdio.h"
+#include "stdlib.h"
+
+VerilatedContext* contextp = NULL;
+VerilatedFstC* tfp = NULL;
+
+static VFSM_bin* top;
+
+void step_and_dump_wave(){
+	top->clk = top->clk ^ 1;
+	contextp->timeInc(2);
+	top->eval();
+	tfp->dump(contextp->time());
+}
+
+void sim_init(){
+	contextp = new VerilatedContext;
+	tfp = new VerilatedFstC;
+	top = new VFSM_bin;
+	contextp->traceEverOn(true);
+	top->trace(tfp, 99);
+	tfp->open("build/simx.fst");
+}
+
+void sim_exit(){
+	step_and_dump_wave();
+	tfp->close();
+}
+
+void rst(int n){
+	top->clk = 0;
+	top->reset = 1;
+	while(n--) {
+		step_and_dump_wave();
+		step_and_dump_wave();
+	}
+	top->reset = 0;
+}
+
+int main(){
+
+	int i = 100;
+
+	sim_init();
+
+	int sim_time = 500;
+	
+	rst(10);
+
+	while (contextp->time()<sim_time && !contextp->gotFinish()){
+		top->in = rand() % 2;
+		printf("%d ", top->in);
+		printf("%d ", top->out);
+		printf("%d ", top->state_dout);
+		//printf("%d\n", top->state_din);
+		step_and_dump_wave(); 
+		step_and_dump_wave();
+	}
+
+
+	sim_exit();					
+}
+
+
+
+

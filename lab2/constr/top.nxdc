@@ -1,0 +1,15 @@
+top=top
+
+A (SW3, SW2, SW1, SW0)
+B (SW7, SW6, SW5, SW4)
+result (LD3, LD2, LD1, LD0)
+btn0 (BTNL)
+btn1 (BTNU)
+btn2 (BTNC)
+btn3 (BTND)
+btn4 (BTNR)
+
+Overflow (LD5)
+Carry (LD6)
+zero (LD7)
+

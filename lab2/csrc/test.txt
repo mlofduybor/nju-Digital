@@ -1,0 +1,43 @@
+#include "Vmux21.h"
+#include "verilated.h"
+#include "verilated_fst_c.h"
+
+VerilatedContext* contextp = NULL;
+VerilatedFstC* tfp = NULL;
+
+static Vmux21* top;
+
+void step_and_dump_wave(){
+	top->eval();
+	contextp->timeInc(1);
+	tfp->dump(contextp->time());
+}
+
+void sim_init(){
+	contextp = new VerilatedContext;
+	tfp = new VerilatedFstC;
+	top = new Vmux21;
+	contextp->traceEverOn(true);
+	top->trace(tfp, 99);
+	tfp->open("build/simx.fst");
+}
+
+void sim_exit(){
+	step_and_dump_wave();
+	tfp->close();
+}
+
+int main(){
+
+	sim_init();
+
+	top->s = 0;top->a = 1;top->b = 0;step_and_dump_wave();    //y = 1
+											  top->b = 1;step_and_dump_wave();		//y = 1
+	top->s = 1;top->a = 1;top->b = 0;step_and_dump_wave();    //y = 0
+											  top->b = 1;step_and_dump_wave();    //y = 1
+	sim_exit();					
+}
+
+
+
+
