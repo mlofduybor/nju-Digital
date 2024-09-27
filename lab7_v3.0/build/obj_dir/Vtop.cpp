@@ -19,6 +19,8 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , ready{vlSymsp->TOP.ready}
     , o_seg_1_1{vlSymsp->TOP.o_seg_1_1}
     , o_seg_1_2{vlSymsp->TOP.o_seg_1_2}
+    , o_seg_2_1{vlSymsp->TOP.o_seg_2_1}
+    , o_seg_2_2{vlSymsp->TOP.o_seg_2_2}
     , o_seg_3_1{vlSymsp->TOP.o_seg_3_1}
     , o_seg_3_2{vlSymsp->TOP.o_seg_3_2}
     , rootp{&(vlSymsp->TOP)}

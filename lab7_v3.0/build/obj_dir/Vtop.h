@@ -33,6 +33,8 @@ class Vtop VL_NOT_FINAL : public VerilatedModel {
     VL_OUT8(&ready,0,0);
     VL_OUT8(&o_seg_1_1,7,0);
     VL_OUT8(&o_seg_1_2,7,0);
+    VL_OUT8(&o_seg_2_1,7,0);
+    VL_OUT8(&o_seg_2_2,7,0);
     VL_OUT8(&o_seg_3_1,7,0);
     VL_OUT8(&o_seg_3_2,7,0);
 

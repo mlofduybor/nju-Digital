@@ -92,6 +92,13 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     __Vdly__top__DOT__ps2_keyboard1__DOT__ps2_clk_sync 
         = ((6U & ((IData)(vlSelf->top__DOT__ps2_keyboard1__DOT__ps2_clk_sync) 
                   << 1U)) | (IData)(vlSelf->ps2_clk));
+    vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data 
+        = (((~ (IData)(vlSelf->nextdata_n)) & (IData)(vlSelf->ready))
+            ? ((0x1cU == (IData)(vlSelf->top__DOT__data))
+                ? 0x61U : ((0x32U == (IData)(vlSelf->top__DOT__data))
+                            ? 0x62U : ((0x21U == (IData)(vlSelf->top__DOT__data))
+                                        ? 0x63U : (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))))
+            : (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data));
     if (vlSelf->clrn) {
         if (vlSelf->top__DOT__fsm1__DOT__count_tag) {
             __Vdly__top__DOT__count_key = (0xffU & 
@@ -111,8 +118,7 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     }
     __Vdly__top__DOT__scan_code = (((IData)(vlSelf->ready) 
                                     & (~ (IData)(vlSelf->nextdata_n)))
-                                    ? vlSelf->top__DOT__ps2_keyboard1__DOT__fifo
-                                   [vlSelf->top__DOT__ps2_keyboard1__DOT__r_ptr]
+                                    ? (IData)(vlSelf->top__DOT__data)
                                     : (IData)(vlSelf->top__DOT__scan_code));
     if (vlSelf->clrn) {
         if (vlSelf->ready) {
@@ -198,11 +204,11 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
                                                       : 2U)
                                                      : 1U)));
     }
-    vlSelf->top__DOT__ps2_keyboard1__DOT__r_ptr = __Vdly__top__DOT__ps2_keyboard1__DOT__r_ptr;
     vlSelf->top__DOT__ps2_keyboard1__DOT__ps2_clk_sync 
         = __Vdly__top__DOT__ps2_keyboard1__DOT__ps2_clk_sync;
     vlSelf->top__DOT__ps2_keyboard1__DOT__w_ptr = __Vdly__top__DOT__ps2_keyboard1__DOT__w_ptr;
     vlSelf->top__DOT__ps2_keyboard1__DOT__count = __Vdly__top__DOT__ps2_keyboard1__DOT__count;
+    vlSelf->top__DOT__ps2_keyboard1__DOT__r_ptr = __Vdly__top__DOT__ps2_keyboard1__DOT__r_ptr;
     if (__Vdlyvset__top__DOT__ps2_keyboard1__DOT__fifo__v0) {
         vlSelf->top__DOT__ps2_keyboard1__DOT__fifo[__Vdlyvdim0__top__DOT__ps2_keyboard1__DOT__fifo__v0] 
             = __Vdlyvval__top__DOT__ps2_keyboard1__DOT__fifo__v0;
@@ -341,6 +347,8 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
                                                : (~ 
                                                   vlSelf->top__DOT__seg3_2__DOT__segs
                                                   [0U]))))));
+    vlSelf->top__DOT__data = vlSelf->top__DOT__ps2_keyboard1__DOT__fifo
+        [vlSelf->top__DOT__ps2_keyboard1__DOT__r_ptr];
     top__DOT__display = ((0U != (IData)(vlSelf->top__DOT__fsm1__DOT__state)) 
                          & ((1U != (IData)(vlSelf->top__DOT__fsm1__DOT__state)) 
                             & (2U == (IData)(vlSelf->top__DOT__fsm1__DOT__state))));
@@ -523,9 +531,189 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
                                                   (~ 
                                                    vlSelf->top__DOT__seg1_2__DOT__segs
                                                    [0U]))))));
+        vlSelf->o_seg_2_1 = (0xffU & ((8U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                       ? ((4U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                           ? ((2U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0xfU])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0xeU]))
+                                               : ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0xdU])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0xcU])))
+                                           : ((2U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0xbU])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0xaU]))
+                                               : ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [9U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [8U]))))
+                                       : ((4U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                           ? ((2U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [7U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [6U]))
+                                               : ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [5U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [4U])))
+                                           : ((2U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [3U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [2U]))
+                                               : ((1U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [1U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_1__DOT__segs
+                                                   [0U]))))));
+        vlSelf->o_seg_2_2 = (0xffU & ((0x80U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                       ? ((0x40U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                           ? ((0x20U 
+                                               & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0xfU])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0xeU]))
+                                               : ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0xdU])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0xcU])))
+                                           : ((0x20U 
+                                               & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0xbU])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0xaU]))
+                                               : ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [9U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [8U]))))
+                                       : ((0x40U & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                           ? ((0x20U 
+                                               & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [7U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [6U]))
+                                               : ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [5U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [4U])))
+                                           : ((0x20U 
+                                               & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                               ? ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [3U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [2U]))
+                                               : ((0x10U 
+                                                   & (IData)(vlSelf->top__DOT__keyboard_decoder_rom1__DOT__data))
+                                                   ? 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [1U])
+                                                   : 
+                                                  (~ 
+                                                   vlSelf->top__DOT__seg2_2__DOT__segs
+                                                   [0U]))))));
     } else {
         vlSelf->o_seg_1_1 = 0xffU;
         vlSelf->o_seg_1_2 = 0xffU;
+        vlSelf->o_seg_2_1 = 0xffU;
+        vlSelf->o_seg_2_2 = 0xffU;
     }
 }
 
