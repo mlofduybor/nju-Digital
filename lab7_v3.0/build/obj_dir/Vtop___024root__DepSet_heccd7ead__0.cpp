@@ -76,9 +76,15 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     __Vdly__top__DOT__ps2_keyboard1__DOT__w_ptr = 0;
     CData/*3:0*/ __Vdly__top__DOT__ps2_keyboard1__DOT__count;
     __Vdly__top__DOT__ps2_keyboard1__DOT__count = 0;
+    CData/*7:0*/ __Vdly__top__DOT__scan_code;
+    __Vdly__top__DOT__scan_code = 0;
+    CData/*7:0*/ __Vdly__top__DOT__count_key;
+    __Vdly__top__DOT__count_key = 0;
     // Body
     __Vdly__top__DOT__ps2_keyboard1__DOT__ps2_clk_sync 
         = vlSelf->top__DOT__ps2_keyboard1__DOT__ps2_clk_sync;
+    __Vdly__top__DOT__count_key = vlSelf->top__DOT__count_key;
+    __Vdly__top__DOT__scan_code = vlSelf->top__DOT__scan_code;
     __Vdly__top__DOT__ps2_keyboard1__DOT__count = vlSelf->top__DOT__ps2_keyboard1__DOT__count;
     __Vdly__top__DOT__ps2_keyboard1__DOT__w_ptr = vlSelf->top__DOT__ps2_keyboard1__DOT__w_ptr;
     __Vdly__top__DOT__ps2_keyboard1__DOT__r_ptr = vlSelf->top__DOT__ps2_keyboard1__DOT__r_ptr;
@@ -86,7 +92,24 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     __Vdly__top__DOT__ps2_keyboard1__DOT__ps2_clk_sync 
         = ((6U & ((IData)(vlSelf->top__DOT__ps2_keyboard1__DOT__ps2_clk_sync) 
                   << 1U)) | (IData)(vlSelf->ps2_clk));
-    vlSelf->top__DOT__scan_code = (((IData)(vlSelf->ready) 
+    if (vlSelf->clrn) {
+        if (vlSelf->top__DOT__fsm1__DOT__count_tag) {
+            __Vdly__top__DOT__count_key = (0xffU & 
+                                           ((IData)(1U) 
+                                            + (IData)(vlSelf->top__DOT__count_key)));
+            vlSelf->top__DOT__fsm1__DOT__count_tag = 0U;
+        } else {
+            __Vdly__top__DOT__count_key = vlSelf->top__DOT__count_key;
+        }
+        vlSelf->top__DOT__fsm1__DOT__count_tag = (((IData)(vlSelf->ready) 
+                                                   & (~ (IData)(vlSelf->nextdata_n))) 
+                                                  & (0xf0U 
+                                                     == (IData)(vlSelf->top__DOT__scan_code)));
+    } else {
+        __Vdly__top__DOT__count_key = 0U;
+        vlSelf->top__DOT__fsm1__DOT__count_tag = 0U;
+    }
+    __Vdly__top__DOT__scan_code = (((IData)(vlSelf->ready) 
                                     & (~ (IData)(vlSelf->nextdata_n)))
                                     ? vlSelf->top__DOT__ps2_keyboard1__DOT__fifo
                                    [vlSelf->top__DOT__ps2_keyboard1__DOT__r_ptr]
@@ -147,6 +170,8 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
         vlSelf->ready = 0U;
         vlSelf->top__DOT__fsm1__DOT__state = 0U;
     }
+    vlSelf->top__DOT__count_key = __Vdly__top__DOT__count_key;
+    vlSelf->top__DOT__scan_code = __Vdly__top__DOT__scan_code;
     if (((IData)(vlSelf->ready) & (~ (IData)(vlSelf->nextdata_n)))) {
         vlSelf->top__DOT__fsm1__DOT__nextstate = ((0U 
                                                    == (IData)(vlSelf->top__DOT__fsm1__DOT__state))
@@ -182,6 +207,140 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
         vlSelf->top__DOT__ps2_keyboard1__DOT__fifo[__Vdlyvdim0__top__DOT__ps2_keyboard1__DOT__fifo__v0] 
             = __Vdlyvval__top__DOT__ps2_keyboard1__DOT__fifo__v0;
     }
+    vlSelf->o_seg_3_1 = (0xffU & ((8U & (IData)(vlSelf->top__DOT__count_key))
+                                   ? ((4U & (IData)(vlSelf->top__DOT__count_key))
+                                       ? ((2U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0xfU])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0xeU]))
+                                           : ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0xdU])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0xcU])))
+                                       : ((2U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0xbU])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0xaU]))
+                                           : ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [9U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [8U]))))
+                                   : ((4U & (IData)(vlSelf->top__DOT__count_key))
+                                       ? ((2U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [7U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [6U]))
+                                           : ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [5U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [4U])))
+                                       : ((2U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [3U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [2U]))
+                                           : ((1U & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [1U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_1__DOT__segs
+                                                  [0U]))))));
+    vlSelf->o_seg_3_2 = (0xffU & ((0x80U & (IData)(vlSelf->top__DOT__count_key))
+                                   ? ((0x40U & (IData)(vlSelf->top__DOT__count_key))
+                                       ? ((0x20U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0xfU])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0xeU]))
+                                           : ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0xdU])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0xcU])))
+                                       : ((0x20U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0xbU])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0xaU]))
+                                           : ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [9U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [8U]))))
+                                   : ((0x40U & (IData)(vlSelf->top__DOT__count_key))
+                                       ? ((0x20U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [7U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [6U]))
+                                           : ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [5U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [4U])))
+                                       : ((0x20U & (IData)(vlSelf->top__DOT__count_key))
+                                           ? ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [3U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [2U]))
+                                           : ((0x10U 
+                                               & (IData)(vlSelf->top__DOT__count_key))
+                                               ? (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [1U])
+                                               : (~ 
+                                                  vlSelf->top__DOT__seg3_2__DOT__segs
+                                                  [0U]))))));
     top__DOT__display = ((0U != (IData)(vlSelf->top__DOT__fsm1__DOT__state)) 
                          & ((1U != (IData)(vlSelf->top__DOT__fsm1__DOT__state)) 
                             & (2U == (IData)(vlSelf->top__DOT__fsm1__DOT__state))));

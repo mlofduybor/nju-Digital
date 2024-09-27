@@ -1,18 +1,18 @@
-module fsm(clk, clrn, data, ready, nextdata_n, display, data_reg);
+module fsm(clk, clrn, data, ready, nextdata_n, display, data_reg, count_key);
 	input clk;
 	input clrn;
 	input [7:0] data;
 	input ready;
 	input nextdata_n;
 	output reg display;
-	//output reg [7:0] count_key;
+	output reg [7:0] count_key;
 	output reg [7:0] data_reg;
 
 	wire tag;
 	reg [7:0] data_reg_prv;
 	reg [1:0] state;
 	reg [1:0] nextstate;
-	//wire count_tag;
+	reg count_tag;
 
 	parameter s0 = 2'b00;
 	parameter s1 = 2'b01;
@@ -63,19 +63,29 @@ module fsm(clk, clrn, data, ready, nextdata_n, display, data_reg);
 	end
 
 
-	// always @(posedge clk)
-	// begin
-	// 	if (!clrn)
-	// 		count_key <= 0;
-	// 	else
-	// 	begin
-	// 		if (count_tag == 1)
-	// 			begin
-	// 				count_key <= count_key + 1;
-	// 			end
-	// 		else
-	// 				count_key <= count_key;
-	// 	end
-	// end
+	always @(posedge clk)
+	begin
+		if (!clrn)
+			count_tag <= 0;
+		else if (ready == 1 && nextdata_n == 0 && data_reg == 8'hf0)
+			count_tag <= 1;
+		else
+			count_tag <= 0;
+	end
+
+
+	always @(posedge clk)
+	begin
+		if (!clrn)
+			count_key <= 0;
+		else if (count_tag == 1)
+		begin
+			count_key <= count_key + 1;
+			count_tag <= 0;
+		end
+		else
+			count_key <= count_key;
+	end
+
 
 endmodule

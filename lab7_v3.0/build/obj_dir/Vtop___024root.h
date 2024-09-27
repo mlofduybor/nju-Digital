@@ -25,6 +25,7 @@ class Vtop___024root final : public VerilatedModule {
     VL_OUT8(o_seg_3_1,7,0);
     VL_OUT8(o_seg_3_2,7,0);
     CData/*7:0*/ top__DOT__scan_code;
+    CData/*7:0*/ top__DOT__count_key;
     CData/*2:0*/ top__DOT__ps2_keyboard1__DOT__w_ptr;
     CData/*2:0*/ top__DOT__ps2_keyboard1__DOT__r_ptr;
     CData/*3:0*/ top__DOT__ps2_keyboard1__DOT__count;
@@ -32,6 +33,7 @@ class Vtop___024root final : public VerilatedModule {
     CData/*0:0*/ top__DOT__ps2_keyboard1__DOT____Vlvbound_h1a91ade8__0;
     CData/*1:0*/ top__DOT__fsm1__DOT__state;
     CData/*1:0*/ top__DOT__fsm1__DOT__nextstate;
+    CData/*0:0*/ top__DOT__fsm1__DOT__count_tag;
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;
     SData/*9:0*/ top__DOT__ps2_keyboard1__DOT__buffer;
@@ -41,6 +43,8 @@ class Vtop___024root final : public VerilatedModule {
     VlUnpacked<CData/*7:0*/, 8> top__DOT__ps2_keyboard1__DOT__fifo;
     VlUnpacked<CData/*7:0*/, 16> top__DOT__seg1_1__DOT__segs;
     VlUnpacked<CData/*7:0*/, 16> top__DOT__seg1_2__DOT__segs;
+    VlUnpacked<CData/*7:0*/, 16> top__DOT__seg3_1__DOT__segs;
+    VlUnpacked<CData/*7:0*/, 16> top__DOT__seg3_2__DOT__segs;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<1> __VicoTriggered;
     VlTriggerVec<1> __VactTriggered;
