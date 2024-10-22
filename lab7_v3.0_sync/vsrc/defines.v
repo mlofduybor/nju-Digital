@@ -1,0 +1,90 @@
+`define acsill_bit 4'b1000
+
+`define A_acsill 8'h41
+`define B_acsill 8'h42
+`define C_acsill 8'h43
+`define D_acsill 8'h44
+`define E_acsill 8'h45
+`define F_acsill 8'h46
+`define G_acsill 8'h47
+`define H_acsill 8'h48
+`define I_acsill 8'h49
+`define J_acsill 8'h4A
+`define K_acsill 8'h4B
+`define L_acsill 8'h4C
+`define M_acsill 8'h4D
+`define N_acsill 8'h4E
+`define O_acsill 8'h4F
+`define P_acsill 8'h50
+`define Q_acsill 8'h51
+`define R_acsill 8'h52
+`define S_acsill 8'h53
+`define T_acsill 8'h54
+`define U_acsill 8'h55
+`define V_acsill 8'h56
+`define W_acsill 8'h57
+`define X_acsill 8'h58
+`define Y_acsill 8'h59
+`define Z_acsill 8'h5A
+`define a_acsill 8'h61
+`define b_acsill 8'h62
+`define c_acsill 8'h63
+`define d_acsill 8'h64
+`define e_acsill 8'h65
+`define f_acsill 8'h66
+`define g_acsill 8'h67
+`define h_acsill 8'h68
+`define i_acsill 8'h69
+`define j_acsill 8'h6A
+`define k_acsill 8'h6B
+`define l_acsill 8'h6C
+`define m_acsill 8'h6D
+`define n_acsill 8'h6E
+`define o_acsill 8'h6F
+`define p_acsill 8'h70
+`define q_acsill 8'h71
+`define r_acsill 8'h72
+`define s_acsill 8'h73
+`define t_acsill 8'h74
+`define u_acsill 8'h75
+`define v_acsill 8'h76
+`define w_acsill 8'h77
+`define x_acsill 8'h78
+`define y_acsill 8'h79
+`define z_acsill 8'h7A
+
+`define break_acsill 8'h80
+`define idle     8'h81
+
+
+`define a_scan 8'h1C
+`define b_scan 8'h32
+`define c_scan 8'h21
+`define d_scan 8'h23
+`define e_scan 8'h24
+`define f_scan 8'h28
+`define g_scan 8'h34
+`define h_scan 8'h33
+`define i_scan 8'h43
+`define j_scan 8'h3b
+`define k_scan 8'h42
+`define l_scan 8'h4B
+`define m_scan 8'h3A
+`define n_scan 8'h31
+`define o_scan 8'h44
+`define p_scan 8'h4D
+`define q_scan 8'h15
+`define r_scan 8'h2D
+`define s_scan 8'h1B
+`define t_scan 8'h2C
+`define u_scan 8'h3C
+`define v_scan 8'h2A
+`define w_scan 8'h1D
+`define x_scan 8'h22
+`define y_scan 8'h35
+`define z_scan 8'h1A
+
+`define break_scan 8'hF0
+
+
+
